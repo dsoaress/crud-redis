@@ -44,5 +44,5 @@ export async function getUsers() {
 export async function searchUsers(q: string) {
   await connect()
   const repository = new Repository(schema, client)
-  return await repository.search().where('name').eq(q).or('email').eq(q).return.all()
+  return await repository.search().where('name').matches(q).or('email').matches(q).return.all()
 }

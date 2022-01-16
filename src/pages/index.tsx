@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/react'
 
 import { Error } from '../components/Error'
-import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { UserList } from '../components/UserList'
 import { useUsers } from '../hooks/useUsers'
@@ -15,7 +14,6 @@ export default function Home() {
     <Box as="main" maxWidth="800px" mx="auto" p={8}>
       <Header />
       <UserList />
-      <Footer />
     </Box>
   )
 }

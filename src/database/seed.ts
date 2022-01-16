@@ -4,7 +4,7 @@ import { createIndex, createUser } from './redis'
 
 async function main() {
   console.log(`Start seeding...`)
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 5; i++) {
     const firstName = name.firstName()
     const lastName = name.lastName()
 
