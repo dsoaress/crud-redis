@@ -1,24 +1,15 @@
-import { useFetchUsers } from '../hooks/useFetchUsers'
+import { Box } from '@chakra-ui/react'
+
+import { Footer } from '../components/Footer'
+import { Header } from '../components/Header'
+import { UserList } from '../components/UserList'
 
 export default function Home() {
-  const { users, loading, error } = useFetchUsers()
-
-  if (error) return <div>{error}</div>
-
   return (
-    <div>
-      <h1>Hello</h1>
-      <ul>
-        {loading ? (
-          <p>Loading</p>
-        ) : (
-          users?.map(user => (
-            <li key={user.entityId}>
-              {user.name} - {user.email}
-            </li>
-          ))
-        )}
-      </ul>
-    </div>
+    <Box as="main" maxWidth="800px" mx="auto" p={8}>
+      <Header />
+      <UserList />
+      <Footer />
+    </Box>
   )
 }
