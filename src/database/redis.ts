@@ -8,8 +8,11 @@ async function connect() {
   }
 }
 
-// eslint-disable-next-line prettier/prettier
-class User extends Entity { }
+class User extends Entity {
+  name!: string
+  email!: string
+  createdAt!: string
+}
 
 let schema = new Schema(
   User,
@@ -41,7 +44,8 @@ export async function createIndex() {
 export async function getUsers() {
   await connect()
   const repository = new Repository(schema, client)
-  return await repository.search().return.all()
+  const users = await repository.search().return.all()
+  return users.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
 }
 
 export async function searchUsers(q: string) {
