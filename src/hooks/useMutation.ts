@@ -7,10 +7,9 @@ type User = {
 }
 
 export function useMutation() {
-  const { users, setUsers, setLoading, setError } = useUsers()
+  const { users, setUsers, setError } = useUsers()
 
   async function mutate(newUser: User) {
-    setLoading(true)
     setError('')
 
     try {
@@ -19,8 +18,6 @@ export function useMutation() {
     } catch (error: any) {
       setError(error.message)
       console.error(error)
-    } finally {
-      setLoading(false)
     }
   }
 

@@ -4,12 +4,11 @@ import { api } from '../services/api'
 import { useUsers } from './useUsers'
 
 export function useFetch() {
-  const { users, setUsers, setLoading, setError } = useUsers()
+  const { users, setUsers, setError } = useUsers()
 
   useEffect(() => {
     async function fetchUsers() {
       setError('')
-      setLoading(true)
 
       try {
         const { data } = await api.get('users')
@@ -17,13 +16,11 @@ export function useFetch() {
       } catch (error: any) {
         setError(error.message)
         console.error(error)
-      } finally {
-        setLoading(false)
       }
     }
 
     fetchUsers()
-  }, [setError, setLoading, setUsers])
+  }, [setError, setUsers])
 
   return { users }
 }
