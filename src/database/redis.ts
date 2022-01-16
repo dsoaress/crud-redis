@@ -24,6 +24,9 @@ let schema = new Schema(
 export async function createUser(data: { name: string; email: string; createdAt: string }) {
   await connect()
   const repository = new Repository(schema, client)
+
+  if (!data.createdAt) data.createdAt = new Date().toISOString()
+
   const user = repository.createEntity(data)
   const id = await repository.save(user)
   return Object.assign(data, { id })
